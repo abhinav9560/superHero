@@ -10,7 +10,6 @@ var superHero =  (function () {
             const response = await fetch(apiUrl);
             const data = await response.json();
             data.data.results.map(item => {
-                console.log(item);
                 list.innerHTML = list.innerHTML + `<a id='item-block' href="./app/superHero.html?id=${item.id}"><div  class='item-block'> <img class='image' src="${item.thumbnail.path}.${item.thumbnail.extension}"/><h3>${item.name}</h3></div></a>`
             })
         } catch (error) {
@@ -25,16 +24,14 @@ var superHero =  (function () {
             const data = await response.json();
             // console.log(data);
             data.data.results.map(item => {
-                list.innerHTML = list.innerHTML + `<div onClick='onSuperHeroClick()' id='item-block' class='item-block'> <i id='heart' class="fa fa-heart" style="font-size:24px;"></i> <img class='image' src="${item.thumbnail.path}.${item.thumbnail.extension}"/><h3>${item.name}</h3></div>`
-                // const superHeroBlock = document.getElementById('item-block');
-                // superHeroBlock.addEventListener('click', onSuperHeroClick);
+                list.innerHTML = list.innerHTML + `<div  id='item-block' class='item-block'> <i onclick='${favClicked(item)}'  id='heart' class="fa fa-heart" style="font-size:24px;"></i> <img class='image' src="${item.thumbnail.path}.${item.thumbnail.extension}"/><h3>${item.name}</h3></div>`
             })
         } catch (error) {
             console.error(error);
         }
     }
-    const onSuperHeroClick = () => {
-        console.log("clickedd");
+    const favClicked = (item) => {
+        console.log(item,"clicked");
     }
 
     window.onload = () => {
@@ -43,6 +40,5 @@ var superHero =  (function () {
     };
     return{
         onSearch:onSearch,
-        onClick:onSuperHeroClick
     }
 })();
