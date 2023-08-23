@@ -24,7 +24,7 @@ var superHero =  (function () {
             const data = await response.json();
             // console.log(data);
             data.data.results.map(item => {
-                list.innerHTML = list.innerHTML + `<div  id='item-block' class='item-block'> <i onclick='${favClicked(item)}'  id='heart' class="fa fa-heart" style="font-size:24px;"></i> <img class='image' src="${item.thumbnail.path}.${item.thumbnail.extension}"/><h3>${item.name}</h3></div>`
+                list.innerHTML = list.innerHTML + `<a id='item-block' href="./app/superHero.html?id=${item.id}"><div  class='item-block'> <i onclick='${favClicked(item)}'  id='heart' class="fa fa-heart" style="font-size:24px;"></i> <img class='image' src="${item.thumbnail.path}.${item.thumbnail.extension}"/><h3>${item.name}</h3></div></a>`
             })
         } catch (error) {
             console.error(error);
